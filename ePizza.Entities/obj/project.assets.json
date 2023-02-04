@@ -327,6 +327,16 @@
             "related": ".xml"
           }
         }
+      },
+      "ePizza.Shared/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v5.0",
+        "compile": {
+          "bin/placeholder/ePizza.Shared.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/ePizza.Shared.dll": {}
+        }
       }
     }
   },
@@ -813,11 +823,17 @@
         "useSharedDesignerContext.txt",
         "version.txt"
       ]
+    },
+    "ePizza.Shared/1.0.0": {
+      "type": "project",
+      "path": "../ePizza.Shared/ePizza.Shared.csproj",
+      "msbuildProject": "../ePizza.Shared/ePizza.Shared.csproj"
     }
   },
   "projectFileDependencyGroups": {
     "net5.0": [
-      "Microsoft.AspNetCore.Identity.EntityFrameworkCore >= 5.0.17"
+      "Microsoft.AspNetCore.Identity.EntityFrameworkCore >= 5.0.17",
+      "ePizza.Shared >= 1.0.0"
     ]
   },
   "packageFolders": {
@@ -852,7 +868,11 @@
       "frameworks": {
         "net5.0": {
           "targetAlias": "net5.0",
-          "projectReferences": {}
+          "projectReferences": {
+            "C:\\Users\\semih\\Desktop\\C# Kodları\\Devam Eden Projeler\\ePizza\\ePizza.Shared\\ePizza.Shared.csproj": {
+              "projectPath": "C:\\Users\\semih\\Desktop\\C# Kodları\\Devam Eden Projeler\\ePizza\\ePizza.Shared\\ePizza.Shared.csproj"
+            }
+          }
         }
       },
       "warningProperties": {

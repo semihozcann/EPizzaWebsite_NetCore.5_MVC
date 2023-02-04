@@ -16,12 +16,12 @@ namespace ePizza.Repositories.Implementations
     public class OrderRepository : Repository<Order>, IOrderRepository
     {
 
-        public ePizzaContext _ePizzaContext
+        public ePizzaContext ePizzaContext
         {
             //context nesnesini burada kapsule(encapsulation) ederek almış olduk.
             get
             {
-                return _ePizzaContext as ePizzaContext;
+                return _context as ePizzaContext;
             }
         }
 
@@ -37,8 +37,8 @@ namespace ePizza.Repositories.Implementations
         public PagingListModel<OrderModel> GetOrderList(int page, int pageSize)
         {
             var pagingModel = new PagingListModel<OrderModel>();
-            var data = (from order in _ePizzaContext.Orders
-                        join payment in _ePizzaContext.PaymentDetails
+            var data = (from order in ePizzaContext.Orders
+                        join payment in ePizzaContext.PaymentDetails
                         on order.PaymentId equals payment.Id
                         select new OrderModel
                         {
@@ -64,7 +64,7 @@ namespace ePizza.Repositories.Implementations
         public IEnumerable<Order> GetUserOrders(int userId)
         {
             //satışa göre kullanıcıları list ettik
-            return _ePizzaContext.Orders.Include(o => o.OrderItem).Where(x => x.UserId == userId).ToList();
+            return ePizzaContext.Orders.Include(o => o.OrderItem).Where(x => x.UserId == userId).ToList();
             
         }
     }

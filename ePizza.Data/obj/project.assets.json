@@ -1850,13 +1850,24 @@
         "type": "project",
         "framework": ".NETCoreApp,Version=v5.0",
         "dependencies": {
-          "Microsoft.AspNetCore.Identity.EntityFrameworkCore": "5.0.17"
+          "Microsoft.AspNetCore.Identity.EntityFrameworkCore": "5.0.17",
+          "ePizza.Shared": "1.0.0"
         },
         "compile": {
           "bin/placeholder/ePizza.Entities.dll": {}
         },
         "runtime": {
           "bin/placeholder/ePizza.Entities.dll": {}
+        }
+      },
+      "ePizza.Shared/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v5.0",
+        "compile": {
+          "bin/placeholder/ePizza.Shared.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/ePizza.Shared.dll": {}
         }
       }
     }
@@ -6224,6 +6235,11 @@
       "type": "project",
       "path": "../ePizza.Entities/ePizza.Entities.csproj",
       "msbuildProject": "../ePizza.Entities/ePizza.Entities.csproj"
+    },
+    "ePizza.Shared/1.0.0": {
+      "type": "project",
+      "path": "../ePizza.Shared/ePizza.Shared.csproj",
+      "msbuildProject": "../ePizza.Shared/ePizza.Shared.csproj"
     }
   },
   "projectFileDependencyGroups": {

@@ -14,12 +14,12 @@ namespace ePizza.Repositories.Implementations
     public class CartRepository : Repository<Cart>, ICartRepository
     {
 
-        public ePizzaContext _ePizzaContext
+        public ePizzaContext ePizzaContext
         {
             //context nesnesini burada kapsule(encapsulation) ederek almış olduk.
             get
             {
-                return _ePizzaContext as ePizzaContext;
+                return _context as ePizzaContext;
             }
         }
 
@@ -29,11 +29,11 @@ namespace ePizza.Repositories.Implementations
 
         public int DeleteItem(Guid cartId, int productId)
         {
-            var item = _ePizzaContext.CartItems.FirstOrDefault(c => c.CartId == cartId && c.Id == productId);
+            var item = ePizzaContext.CartItems.FirstOrDefault(c => c.CartId == cartId && c.Id == productId);
             if (item!=null)
             {
-                _ePizzaContext.CartItems.Remove(item);
-                return _ePizzaContext.SaveChanges();
+                ePizzaContext.CartItems.Remove(item);
+                return ePizzaContext.SaveChanges();
             }
             else
             {
@@ -43,21 +43,21 @@ namespace ePizza.Repositories.Implementations
 
         public Cart GetCart(Guid cartId)
         {
-            return _ePizzaContext.Carts.Include
+            return ePizzaContext.Carts.Include
                 ("Product").FirstOrDefault(x => x.Id ==  cartId&& x.IsActive == true);
         }
 
         public CartModel GetCartDetails(Guid cartId)
         {
-            var model = (from cart in _ePizzaContext.Carts
+            var model = (from cart in ePizzaContext.Carts
                          where cart.Id == cartId && cart.IsActive == true
                          select new CartModel
                          {
                              Id = cart.Id,
                              UserId = cart.UserId,
                              CreatedDate = DateTime.Now,
-                             Products = (from cartItem in _ePizzaContext.CartItems
-                                         join item in _ePizzaContext.Products
+                             Products = (from cartItem in ePizzaContext.CartItems
+                                         join item in ePizzaContext.Products
                                          on cartItem.ProductId equals item.Id
                                          where cartItem.CartId == cartId
                                          select new ProductModel()
@@ -97,7 +97,7 @@ namespace ePizza.Repositories.Implementations
                 }
                 if (flag) //bayrak true ise sql e kaydet
                 {
-                    return _ePizzaContext.SaveChanges();
+                    return ePizzaContext.SaveChanges();
                 }
             }
             return 0; //return 0 döndür eğer ürün yada sepet yoksa
@@ -107,7 +107,7 @@ namespace ePizza.Repositories.Implementations
         {
             Cart cart = GetCart(cartId);
             cart.UserId = userId;
-            return _ePizzaContext.SaveChanges();
+            return ePizzaContext.SaveChanges();
         }
     }
 }

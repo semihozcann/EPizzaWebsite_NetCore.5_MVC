@@ -1129,10 +1129,16 @@
       },
       "ePizza.Entities/1.0.0": {
         "dependencies": {
-          "Microsoft.AspNetCore.Identity.EntityFrameworkCore": "5.0.17"
+          "Microsoft.AspNetCore.Identity.EntityFrameworkCore": "5.0.17",
+          "ePizza.Shared": "1.0.0"
         },
         "runtime": {
           "ePizza.Entities.dll": {}
+        }
+      },
+      "ePizza.Shared/1.0.0": {
+        "runtime": {
+          "ePizza.Shared.dll": {}
         }
       }
     }
@@ -1856,6 +1862,11 @@
       "sha512": ""
     },
     "ePizza.Entities/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "ePizza.Shared/1.0.0": {
       "type": "project",
       "serviceable": false,
       "sha512": ""

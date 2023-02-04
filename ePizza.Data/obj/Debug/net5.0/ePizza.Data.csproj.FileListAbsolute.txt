@@ -4,7 +4,9 @@ C:\Users\semih\Desktop\C# Kodları\Devam Eden Projeler\ePizza\ePizza.Data\bin\De
 C:\Users\semih\Desktop\C# Kodları\Devam Eden Projeler\ePizza\ePizza.Data\bin\Debug\net5.0\ePizza.Data.dll
 C:\Users\semih\Desktop\C# Kodları\Devam Eden Projeler\ePizza\ePizza.Data\bin\Debug\net5.0\ePizza.Data.pdb
 C:\Users\semih\Desktop\C# Kodları\Devam Eden Projeler\ePizza\ePizza.Data\bin\Debug\net5.0\ePizza.Entities.dll
+C:\Users\semih\Desktop\C# Kodları\Devam Eden Projeler\ePizza\ePizza.Data\bin\Debug\net5.0\ePizza.Shared.dll
 C:\Users\semih\Desktop\C# Kodları\Devam Eden Projeler\ePizza\ePizza.Data\bin\Debug\net5.0\ePizza.Entities.pdb
+C:\Users\semih\Desktop\C# Kodları\Devam Eden Projeler\ePizza\ePizza.Data\bin\Debug\net5.0\ePizza.Shared.pdb
 C:\Users\semih\Desktop\C# Kodları\Devam Eden Projeler\ePizza\ePizza.Data\obj\Debug\net5.0\ePizza.Data.csproj.AssemblyReference.cache
 C:\Users\semih\Desktop\C# Kodları\Devam Eden Projeler\ePizza\ePizza.Data\obj\Debug\net5.0\ePizza.Data.GeneratedMSBuildEditorConfig.editorconfig
 C:\Users\semih\Desktop\C# Kodları\Devam Eden Projeler\ePizza\ePizza.Data\obj\Debug\net5.0\ePizza.Data.AssemblyInfoInputs.cache
