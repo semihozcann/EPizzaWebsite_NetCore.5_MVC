@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace ePizzaServices.Interfaces
 {
-    public interface IProductSerice
+    public interface IProductService
     {
         Task<IDataResult<ProductDto>> GetAsync(int productId);
         Task<IDataResult<ProductListDto>> GetAllAsync();

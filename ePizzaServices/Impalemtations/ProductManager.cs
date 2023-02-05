@@ -1,4 +1,5 @@
-﻿using ePizza.En.Dtos.Products;
+﻿using AutoMapper;
+using ePizza.En.Dtos.Products;
 using ePizza.Entities.Dtos.Products;
 using ePizza.Repositories.Interfaces;
 using ePizza.Shared.Utilities.Abstract;
@@ -11,13 +12,15 @@ using System.Threading.Tasks;
 
 namespace ePizzaServices.Impalemtations
 {
-    public class ProductManager : IProductSerice
+    public class ProductManager : IProductService
     {
-        IProductRepository _productRepository;
+        private readonly IProductRepository _productRepository;
+        private readonly IMapper _mapper;
 
-        public ProductManager(IProductRepository productRepository)
+        public ProductManager(IProductRepository productRepository,IMapper mapper)
         {
             _productRepository = productRepository;
+            _mapper = mapper;
         }
 
         public Task<IDataResult<ProductDto>> AddAsync(ProductAddDto productAddDto)
