@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "uBvK0f53L9kMRfxBjJcyQNhnyy5Wu1Q6I8VgxKlF43WkiE/4KqfZapsybgEQZl/wJypYnmMXG0Xmi6OGu0b4oQ==",
+  "dgSpecHash": "9+ZrdOos1YR2IdMIlfiEBLBwdyIAJT4JNA4POLYyY1HGjLXX2BHh3JwQ5onmH+WMX4Hps8qUS0nmjIQXx+6VtQ==",
   "success": true,
-  "projectFilePath": "C:\\Users\\semih\\Desktop\\C# Kodları\\Devam Eden Projeler\\ePizza\\ePizzaServices\\ePizzaServices.csproj",
+  "projectFilePath": "C:\\Users\\semih\\Desktop\\C# Kodları\\Devam Eden Projeler\\ePizza\\ePizzaServices\\ePizza.Services.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\semih\\.nuget\\packages\\automapper\\12.0.1\\automapper.12.0.1.nupkg.sha512",
     "C:\\Users\\semih\\.nuget\\packages\\jetbrains.annotations\\2022.1.0\\jetbrains.annotations.2022.1.0.nupkg.sha512",

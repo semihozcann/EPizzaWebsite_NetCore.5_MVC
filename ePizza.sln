@@ -14,7 +14,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ePizza.Repositories", "ePiz
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ePizza.Shared", "ePizza.Shared\ePizza.Shared.csproj", "{037A9E3B-011B-4027-BA49-47F95C6ABD78}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ePizzaServices", "ePizzaServices\ePizzaServices.csproj", "{B2C2B1F2-ABED-4871-A4B8-84B6819C2207}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ePizza.Services", "ePizzaServices\ePizza.Services.csproj", "{B2C2B1F2-ABED-4871-A4B8-84B6819C2207}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

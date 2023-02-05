@@ -7,7 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ePizzaServices.Interfaces
+namespace ePizza.Services.Interfaces
 {
     public interface IProductService
     {

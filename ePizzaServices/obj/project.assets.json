@@ -6289,9 +6289,9 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\semih\\Desktop\\C# Kodları\\Devam Eden Projeler\\ePizza\\ePizzaServices\\ePizzaServices.csproj",
-      "projectName": "ePizzaServices",
-      "projectPath": "C:\\Users\\semih\\Desktop\\C# Kodları\\Devam Eden Projeler\\ePizza\\ePizzaServices\\ePizzaServices.csproj",
+      "projectUniqueName": "C:\\Users\\semih\\Desktop\\C# Kodları\\Devam Eden Projeler\\ePizza\\ePizzaServices\\ePizza.Services.csproj",
+      "projectName": "ePizza.Services",
+      "projectPath": "C:\\Users\\semih\\Desktop\\C# Kodları\\Devam Eden Projeler\\ePizza\\ePizzaServices\\ePizza.Services.csproj",
       "packagesPath": "C:\\Users\\semih\\.nuget\\packages\\",
       "outputPath": "C:\\Users\\semih\\Desktop\\C# Kodları\\Devam Eden Projeler\\ePizza\\ePizzaServices\\obj\\",
       "projectStyle": "PackageReference",

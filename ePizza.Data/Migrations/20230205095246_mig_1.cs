@@ -100,8 +100,7 @@ namespace ePizza.Data.Migrations
                 name: "Orders",
                 columns: table => new
                 {
-                    Id = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
+                    Id = table.Column<string>(type: "nvarchar(450)", nullable: false),
                     UserId = table.Column<int>(type: "int", nullable: false),
                     PaymentId = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     Street = table.Column<string>(type: "nvarchar(250)", maxLength: 250, nullable: false),
@@ -287,15 +286,14 @@ namespace ePizza.Data.Migrations
                     UnitPrice = table.Column<decimal>(type: "decimal(18,2)", nullable: false),
                     Quantity = table.Column<int>(type: "int", nullable: false),
                     Total = table.Column<decimal>(type: "decimal(18,2)", nullable: false),
-                    OrderId = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    OrderId1 = table.Column<int>(type: "int", nullable: true)
+                    OrderId = table.Column<string>(type: "nvarchar(450)", nullable: true)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_OrderItems", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_OrderItems_Orders_OrderId1",
-                        column: x => x.OrderId1,
+                        name: "FK_OrderItems_Orders_OrderId",
+                        column: x => x.OrderId,
                         principalTable: "Orders",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Restrict);
@@ -336,8 +334,8 @@ namespace ePizza.Data.Migrations
                 columns: new[] { "Id", "ConcurrencyStamp", "Description", "Name", "NormalizedName" },
                 values: new object[,]
                 {
-                    { 1, "faaeece0-161e-4810-9c5a-e70e7fda9d70", "Admin Account", "Admin", "ADMİN" },
-                    { 2, "bb2fd831-f9c7-42cb-ae2b-618db2ba580f", "User Account", "User", "USER" }
+                    { 1, "e1be56b9-1c83-4b7a-8ec0-cbca8fb7373d", "Admin Account", "Admin", "ADMİN" },
+                    { 2, "8a417f72-2d2e-4105-a110-ec63ea08c631", "User Account", "User", "USER" }
                 });
 
             migrationBuilder.InsertData(
@@ -404,9 +402,9 @@ namespace ePizza.Data.Migrations
                 column: "CartId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_OrderItems_OrderId1",
+                name: "IX_OrderItems_OrderId",
                 table: "OrderItems",
-                column: "OrderId1");
+                column: "OrderId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Products_CategoryId",

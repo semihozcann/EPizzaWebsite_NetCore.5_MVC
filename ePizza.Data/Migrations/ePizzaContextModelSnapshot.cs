@@ -146,10 +146,9 @@ namespace ePizza.Data.Migrations
 
             modelBuilder.Entity("ePizza.Entities.Concrete.Order", b =>
                 {
-                    b.Property<int>("Id")
+                    b.Property<string>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+                        .HasColumnType("nvarchar(450)");
 
                     b.Property<string>("City")
                         .IsRequired()
@@ -198,10 +197,7 @@ namespace ePizza.Data.Migrations
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
                     b.Property<string>("OrderId")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<int?>("OrderId1")
-                        .HasColumnType("int");
+                        .HasColumnType("nvarchar(450)");
 
                     b.Property<int>("ProductId")
                         .HasColumnType("int");
@@ -217,7 +213,7 @@ namespace ePizza.Data.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("OrderId1");
+                    b.HasIndex("OrderId");
 
                     b.ToTable("OrderItems");
                 });
@@ -366,7 +362,7 @@ namespace ePizza.Data.Migrations
                         new
                         {
                             Id = 1,
-                            ConcurrencyStamp = "faaeece0-161e-4810-9c5a-e70e7fda9d70",
+                            ConcurrencyStamp = "e1be56b9-1c83-4b7a-8ec0-cbca8fb7373d",
                             Description = "Admin Account",
                             Name = "Admin",
                             NormalizedName = "ADMİN"
@@ -374,7 +370,7 @@ namespace ePizza.Data.Migrations
                         new
                         {
                             Id = 2,
-                            ConcurrencyStamp = "bb2fd831-f9c7-42cb-ae2b-618db2ba580f",
+                            ConcurrencyStamp = "8a417f72-2d2e-4105-a110-ec63ea08c631",
                             Description = "User Account",
                             Name = "User",
                             NormalizedName = "USER"
@@ -571,7 +567,7 @@ namespace ePizza.Data.Migrations
                 {
                     b.HasOne("ePizza.Entities.Concrete.Order", "Order")
                         .WithMany("OrderItem")
-                        .HasForeignKey("OrderId1");
+                        .HasForeignKey("OrderId");
 
                     b.Navigation("Order");
                 });

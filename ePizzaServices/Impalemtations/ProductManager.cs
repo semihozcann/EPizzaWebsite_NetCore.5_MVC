@@ -1,19 +1,20 @@
 ﻿using AutoMapper;
 using ePizza.En.Dtos.Products;
 using ePizza.Entities.Concrete;
+using ePizza.Entities.Dtos.Categories;
 using ePizza.Entities.Dtos.Products;
 using ePizza.Repositories.Interfaces;
 using ePizza.Shared.Utilities.Abstract;
 using ePizza.Shared.Utilities.ComplexType;
 using ePizza.Shared.Utilities.Concrete;
-using ePizzaServices.Interfaces;
+using ePizza.Services.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ePizzaServices.Impalemtations
+namespace ePizza.Services.Impalemtations
 {
     public class ProductManager : IProductService
     {
@@ -63,9 +64,26 @@ namespace ePizzaServices.Impalemtations
             }
         }
 
-        public Task<IDataResult<ProductListDto>> GetAllAsync()
+        public async Task<IDataResult<ProductListDto>> GetAllAsync()
         {
-            throw new NotImplementedException();
+            var products = await _productRepository.GetAllAsync();
+            if (products != null)
+            {
+                return new DataResult<ProductListDto>(ResultStatus.Success, new ProductListDto
+                {
+                    Products = products,
+                    ResultStatus = ResultStatus.Success
+                });
+            }
+            else
+            {
+                return new DataResult<ProductListDto>(ResultStatus.Error, "Products Not Found", new ProductListDto
+                {
+                    Products = null,
+                    Message = "Products Not Found",
+                    ResultStatus = ResultStatus.Error
+                });
+            }
         }
 
         public async Task<IDataResult<ProductDto>> GetAsync(int productId)
@@ -81,18 +99,27 @@ namespace ePizzaServices.Impalemtations
             }
             else
             {
-                return new DataResult<ProductDto>(ResultStatus.Success, "Product Not Found", new ProductDto
+                return new DataResult<ProductDto>(ResultStatus.Success, "Kendimi Seviyorum", new ProductDto
                 {
                     Product = null,
-                    Message = "Product Not Found",
+                    Message = "Kendimi Seviyorum",
                     ResultStatus= ResultStatus.Error,
                 });
             }
         }
 
-        public Task<IDataResult<ProductDto>> UpdateAsync(ProductUpdateDto productUpdateDto)
+        public async Task<IDataResult<ProductDto>> UpdateAsync(ProductUpdateDto productUpdateDto)
         {
-            throw new NotImplementedException();
+            var oldProduct = await _productRepository.GetAsync(x => x.Id == productUpdateDto.Id);
+            var product = _mapper.Map<ProductUpdateDto, Product>(productUpdateDto, oldProduct);
+            var updatedProduct = await _productRepository.UpdateAsync(product);
+            await _productRepository.SaveAsync();
+            return new DataResult<ProductDto>(ResultStatus.Success, new ProductDto
+            {
+                Product = updatedProduct,
+                Message = "Product Updated",
+                ResultStatus = ResultStatus.Success,
+            });
         }
     }
 }

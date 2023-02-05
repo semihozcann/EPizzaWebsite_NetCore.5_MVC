@@ -13,7 +13,7 @@ namespace ePizza.Entities.Concrete
             OrderItem = new HashSet<OrderItem>();
         }
 
-        public int Id { get; set; }
+        public string Id { get; set; }
         public int UserId { get; set; }
         public string PaymentId { get; set; }
         public string Street { get; set; }
