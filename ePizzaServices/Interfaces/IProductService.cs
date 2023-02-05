@@ -15,7 +15,7 @@ namespace ePizzaServices.Interfaces
         Task<IDataResult<ProductListDto>> GetAllAsync();
         Task<IDataResult<ProductDto>> AddAsync(ProductAddDto productAddDto);
         Task<IDataResult<ProductDto>> UpdateAsync(ProductUpdateDto productUpdateDto);
-        Task<IDataResult<ProductDto>> DeleteAsync(int categoryId);
+        Task<IDataResult<ProductDto>> DeleteAsync(int productId);
 
         
 

@@ -1,8 +1,11 @@
 ﻿using AutoMapper;
 using ePizza.En.Dtos.Products;
+using ePizza.Entities.Concrete;
 using ePizza.Entities.Dtos.Products;
 using ePizza.Repositories.Interfaces;
 using ePizza.Shared.Utilities.Abstract;
+using ePizza.Shared.Utilities.ComplexType;
+using ePizza.Shared.Utilities.Concrete;
 using ePizzaServices.Interfaces;
 using System;
 using System.Collections.Generic;
@@ -23,14 +26,41 @@ namespace ePizzaServices.Impalemtations
             _mapper = mapper;
         }
 
-        public Task<IDataResult<ProductDto>> AddAsync(ProductAddDto productAddDto)
+        public async Task<IDataResult<ProductDto>> AddAsync(ProductAddDto productAddDto)
         {
-            throw new NotImplementedException();
+            var product = _mapper.Map<Product>(productAddDto); //öncelikle gelen datayı dto olarak maplemiz gerekmektedir. aksi halde anaymous type olarak giden data hata çözülmeyecektir.
+            var productAdded = await _productRepository.AddAsync(product);
+            return new DataResult<ProductDto>(ResultStatus.Success, "Product Added", new ProductDto
+            {
+                Product = productAdded,
+                Message = "Product Added",
+                ResultStatus = ResultStatus.Success
+            });
         }
 
-        public Task<IDataResult<ProductDto>> DeleteAsync(int categoryId)
+        public async Task<IDataResult<ProductDto>> DeleteAsync(int productId)
         {
-            throw new NotImplementedException();
+            var product = await _productRepository.GetAsync(x => x.Id == productId);
+            if (productId != null)
+            {
+                var deletedProduct = await _productRepository.DeleteAsync(product);
+                await _productRepository.SaveAsync();
+                return new DataResult<ProductDto>(ResultStatus.Success, "Product is Deleted", new ProductDto
+                {
+                    Product = deletedProduct,
+                    Message = "Product is Deleted",
+                    ResultStatus = ResultStatus.Success
+                });
+            }
+            else
+            {
+                return new DataResult<ProductDto>(ResultStatus.Error, "Product Not Found", new ProductDto
+                {
+                    Product = null,
+                    Message = "Product Not Found",
+                    ResultStatus= ResultStatus.Error
+                });
+            }
         }
 
         public Task<IDataResult<ProductListDto>> GetAllAsync()
@@ -38,9 +68,26 @@ namespace ePizzaServices.Impalemtations
             throw new NotImplementedException();
         }
 
-        public Task<IDataResult<ProductDto>> GetAsync(int productId)
+        public async Task<IDataResult<ProductDto>> GetAsync(int productId)
         {
-            throw new NotImplementedException();
+            var product = await _productRepository.GetAsync(x => x.Id == productId);
+            if (product!=null)
+            {
+                return new DataResult<ProductDto>(ResultStatus.Success, new ProductDto
+                {
+                    Product = product,
+                    ResultStatus = ResultStatus.Success,
+                });
+            }
+            else
+            {
+                return new DataResult<ProductDto>(ResultStatus.Success, "Product Not Found", new ProductDto
+                {
+                    Product = null,
+                    Message = "Product Not Found",
+                    ResultStatus= ResultStatus.Error,
+                });
+            }
         }
 
         public Task<IDataResult<ProductDto>> UpdateAsync(ProductUpdateDto productUpdateDto)
