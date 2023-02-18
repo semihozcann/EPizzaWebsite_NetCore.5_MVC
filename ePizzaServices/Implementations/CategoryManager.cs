@@ -12,7 +12,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ePizza.Services.Impalemtations
+namespace ePizza.Services.Implementations
 {
     public class CategoryManager : ICategoryService
     {

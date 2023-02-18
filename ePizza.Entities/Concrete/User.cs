@@ -13,6 +13,6 @@ namespace ePizza.Entities.Concrete
         public string Name { get; set; }
 
         [NotMapped]
-        public string[] Roller { get; set; }
+        public string[] Roles { get; set; }
     }
 }
