@@ -4,7 +4,7 @@ namespace ePizza.UI.Helpers.Interfaces
 {
     public interface IFileHelper
     {
-        void DeleteFile(string ımageUrl);
+        void DeleteFile(string imageUrl);
         string UploadFile(IFormFile file);
 
     }

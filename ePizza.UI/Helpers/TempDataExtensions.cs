@@ -3,7 +3,7 @@ using System.Text.Json;
 
 namespace ePizza.UI.Helpers
 {
-    public class TempDataExtensions
+    public static class TempDataExtensions
     {
 
         public static void Set<T>(this ITempDataDictionary tempData, string key, T value) where T : class
@@ -23,4 +23,5 @@ namespace ePizza.UI.Helpers
             return o == null ? null : JsonSerializer.Deserialize<T>((string)o);
 
         }
+    }
 }
