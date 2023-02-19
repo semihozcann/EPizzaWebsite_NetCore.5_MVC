@@ -7,6 +7,7 @@ using Razorpay.Api;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -30,7 +31,24 @@ namespace ePizza.Services.Implementations
 
         public string CapturePayment(string paymentId, string orderId)
         {
-            throw new NotImplementedException();
+            if (string.IsNullOrWhiteSpace(paymentId))
+            {
+                try
+                {
+                    Payment payment = _client.Payment.Fetch(paymentId);
+                    Dictionary<string, object> options = new Dictionary<string, object>();
+                    options.Add("amount", payment.Attributes["amount"]);
+                    options.Add("currency", payment.Attributes["currency"]);
+                    Payment paymentCaptured = payment.Capture(options);
+                    return paymentCaptured.Attributes["status"];
+                }
+                catch (Exception ex)
+                {
+
+                    return ex.Message;
+                }
+            }
+            return null;
         }
 
         public string CreateOrder(decimal amount, string currency, string receipt)
@@ -62,14 +80,39 @@ namespace ePizza.Services.Implementations
             return null;
         }
 
-        public Task<int> SavePaymentDetails(PaymentDetails model)
+        public async Task<int> SavePaymentDetails(PaymentDetails model)
         {
-            throw new NotImplementedException();
+            await _repository.AddAsync(model);
+            var cart = _cartRepository.FindAsync(model.CartId);
+            cart.Result.IsActive = false;
+            return await _repository.SaveAsync();
         }
 
         public bool VerifySignature(string signature, string orderId, string paymentId)
         {
-            throw new NotImplementedException();
+            string payload = $"{orderId}{paymentId}";
+            string secret = RazorpayClient.Secret;
+            string actualSignature = GetActualSignature(payload, secret);
+            return actualSignature.Equals(signature);
+        }
+
+        private string GetActualSignature(string payload, string secret)
+        {
+            byte[] secretbytes = StringEncode(secret);
+            HMACSHA256 hashHmac = new HMACSHA256(secretbytes);
+            var bytes = StringEncode(payload);
+            return HashCode(hashHmac.ComputeHash(bytes));
+        }
+
+        private string HashCode(byte[] bytes)
+        {
+            return BitConverter.ToString(bytes).Replace("_", "").ToLower();
+        }
+
+        private byte[] StringEncode(string secret)
+        {
+            var encoding = new ASCIIEncoding();
+            return encoding.GetBytes(secret);
         }
     }
 }

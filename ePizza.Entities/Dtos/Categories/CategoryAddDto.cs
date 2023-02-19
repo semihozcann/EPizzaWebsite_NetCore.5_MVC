@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace ePizza.Entities.Dtos.Categories
 {
-    public class CategoryAddDto : DtoGetBase
+    public class CategoryAddDto
     {
         [Required(ErrorMessage = "Please Enter Name")]
         public string Name { get; set; }

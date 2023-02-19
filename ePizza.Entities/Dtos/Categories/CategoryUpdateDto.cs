@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace ePizza.Entities.Dtos.Categories
 {
-    public class CategoryUpdateDto : DtoGetBase
+    public class CategoryUpdateDto
     {
         [Required]
         public int Id { get; set; }
